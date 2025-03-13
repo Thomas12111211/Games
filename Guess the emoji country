@@ -1,0 +1,35 @@
+javascript:(function() {
+    const countries = [
+        { name: "France", emojis: "🥖🍷" },
+        { name: "Japan", emojis: "🍣🎎" },
+        { name: "Brazil", emojis: "🌴⚽" },
+        { name: "Australia", emojis: "🐨🏄‍♂️" },
+        { name: "Canada", emojis: "🍁🏒" },
+        { name: "Germany", emojis: "🍺🍂" },
+        { name: "Italy", emojis: "🍕🍝" },
+        { name: "England", emojis: "☕🎡" },
+        { name: "usa", emojis: "🍔🎬" },
+        { name: "India", emojis: "🕌🕉️" },
+        { name: "Iceland", emojis: "🥶🛬" }
+    ];
+
+    const randomCountry = countries[Math.floor(Math.random() * countries.length)];
+    let attempts = 3;
+    let guessedCorrectly = false;
+
+    while (attempts > 0 && !guessedCorrectly) {
+        const guess = prompt(`Guess the country from these emojis: ${randomCountry.emojis}\nYou have ${attempts} attempts left:`).trim();
+
+        if (guess.toLowerCase() === randomCountry.name.toLowerCase()) {
+            alert("Congratulations! You guessed the country correctly.");
+            guessedCorrectly = true;
+        } else {
+            attempts -= 1;
+            if (attempts > 0) {
+                alert("Incorrect guess. Try again.");
+            } else {
+                alert(`Sorry, you're out of attempts. The correct answer was ${randomCountry.name}.`);
+            }
+        }
+    }
+})();
