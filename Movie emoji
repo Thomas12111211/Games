@@ -1,0 +1,51 @@
+javascript:(function() {
+    const movies = [
+        { emoji: "🐝🎥", title: "The bee movie" },
+        { emoji: "🧙‍♂️⚡", title: "Harry Potter" },
+        { emoji: "🎄🎁❌", title: "The grinch" }
+    ];
+
+    let currentMovieIndex = 0;
+    let lives = 3;
+
+    function updateGame() {
+        document.getElementById('emoji').textContent = movies[currentMovieIndex].emoji;
+        document.getElementById('lives').textContent = 'Lives: ' + lives;
+        document.getElementById('guess').value = '';
+    }
+
+    function checkGuess() {
+        const guess = document.getElementById('guess').value.trim().toLowerCase();
+        const correctTitle = movies[currentMovieIndex].title.toLowerCase();
+        if (guess === correctTitle) {
+            alert('Correct!');
+            currentMovieIndex = (currentMovieIndex + 1) % movies.length;
+            lives = 3;
+        } else {
+            lives--;
+            if (lives === 0) {
+                alert('Game Over! The correct answer was ' + movies[currentMovieIndex].title);
+                lives = 3;
+            } else {
+                alert('Incorrect! Try again.');
+            }
+        }
+        updateGame();
+    }
+
+    document.body.innerHTML = `
+        <div style="font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f4f4f4; text-align: center;">
+            <div style="background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <h1>Guess the Movie by Emojis</h1>
+                <div id="emoji" style="font-size: 2em;">🎬🎥</div>
+                <div style="margin-top: 20px;">
+                    <input type="text" id="guess" placeholder="Enter your guess" style="padding: 10px; font-size: 1em; border: 1px solid #ccc; border-radius: 5px;">
+                    <button onclick="checkGuess()" style="padding: 10px 15px; font-size: 1em; border: none; border-radius: 5px; background-color: #28a745; color: white; cursor: pointer;">Submit</button>
+                </div>
+                <div id="lives" style="margin-top: 20px;">Lives: 3</div>
+            </div>
+        </div>
+    `;
+
+    updateGame();
+})();
