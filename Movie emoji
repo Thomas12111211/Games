@@ -3,7 +3,7 @@ javascript:(function() {
         { emoji: "🐝🎥", title: "The bee movie" },
         { emoji: "🧙‍♂️⚡", title: "Harry Potter" },
         { emoji: "🎄🎁❌", title: "The grinch" },
-        { emoji: "🏠🎈", title: "Only up" }
+        { emoji: "🏠🎈", title: "Up" }
     ];
 
     let currentMovieIndex = 0;
