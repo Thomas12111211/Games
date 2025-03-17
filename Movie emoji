@@ -2,7 +2,8 @@ javascript:(function() {
     const movies = [
         { emoji: "🐝🎥", title: "The bee movie" },
         { emoji: "🧙‍♂️⚡", title: "Harry Potter" },
-        { emoji: "🎄🎁❌", title: "The grinch" }
+        { emoji: "🎄🎁❌", title: "The grinch" },
+        { emoji: "🏠🎈", title: "Only up" }
     ];
 
     let currentMovieIndex = 0;
